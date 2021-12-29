@@ -22,7 +22,7 @@ var app = module.exports = express();
 //     next();
 //   });
 app.use('/', express.static(__dirname + '/static'));
-app.use(express.bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
+app.use(bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
 
 app.get("/api", function(req, res, next){
     res.send("Hello World");
