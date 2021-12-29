@@ -22,14 +22,14 @@ var app = module.exports = express();
 //     next();
 //   });
 app.use('/', express.static(__dirname + '/static'));
-app.use(bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
+//app.use(bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
 
 app.get("/api", function(req, res, next){
     res.send("Hello World");
 });
 
-//app.post('/api/scores/upload', upload.single('file'), function(req, res, next){});
-app.post('/api/scores/upload', function(req, res, next){
+app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
+//app.post('/api/scores/upload', function(req, res, next){
     console.log(req);
     console.log("Directory: " + __dirname +'/static/tmp');
     fs.readdir(__dirname +'/static/tmp', function(err, files) {
