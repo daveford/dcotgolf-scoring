@@ -30,6 +30,7 @@ app.get("/api", function(req, res, next){
 
 //app.post('/api/scores/upload', upload.single('file'), function(req, res, next){});
 app.post('/api/scores/upload', function(req, res, next){
+    console.log(req);
     console.log("Directory: " + __dirname +'/static/tmp');
     fs.readdir(__dirname +'/static/tmp', function(err, files) {
         if (err) {
