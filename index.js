@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
-const upload = multer({ dest: 'tmp/csv/' });
+const upload = multer({ dest: '.' });
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
