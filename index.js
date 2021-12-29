@@ -19,6 +19,8 @@ var app = module.exports = express();
 //     req.key = key;
 //     next();
 //   });
+app.use('/', express.static(__dirname + '/static'));
+app.use(express.bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
 
 app.get("/api", function(req, res, next){
     res.send("Hello World");
