@@ -30,21 +30,8 @@ app.get("/api", function(req, res, next){
 
 app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
 //app.post('/api/scores/upload', function(req, res, next){
-    console.log(req);
-    console.log("Directory: " + __dirname +'/static/tmp');
-    fs.readdir(__dirname +'/static/tmp', function(err, files) {
-        if (err) {
-           console.error(err);
-        } else {
-           if (!files.length) {
-               // directory appears to be empty
-               console.error("Directory is empty");
-           }
-           files.foreach(element => {
-            console.log(element);
-          })
-        }
-    });
+    console.log(req.body);
+    console.log(req.files);
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
