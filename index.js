@@ -1,7 +1,8 @@
 const multer = require('multer');
 const upload = multer({ dest: 'tmp/csv/' });
-const express = require('express')
-const path = require('path')
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 var app = module.exports = express();
 
@@ -24,3 +25,5 @@ app.get("/api", function(req, res, next){
 });
 
 app.post('/api/scores/upload', upload.single('file'), function(req, res, next){});
+
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
