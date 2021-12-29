@@ -30,12 +30,14 @@ app.get("/api", function(req, res, next){
 
 //app.post('/api/scores/upload', upload.single('file'), function(req, res, next){});
 app.post('/api/scores/upload', function(req, res, next){
+    console.log("Directory: " + __dirname +'/static/tmp');
     fs.readdir(__dirname +'/static/tmp', function(err, files) {
         if (err) {
-           // some sort of error
+           console.error(err);
         } else {
            if (!files.length) {
                // directory appears to be empty
+               console.error("Directory is empty");
            }
            files.foreach(element => {
             console.log(element);
