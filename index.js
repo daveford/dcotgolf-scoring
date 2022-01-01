@@ -28,8 +28,8 @@ app.get("/api", function(req, res, next){
     res.send("Hello World");
 });
 
-app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
-//app.post('/api/scores/upload', function(req, res, next){
+//app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
+app.post('/api/scores/upload', function(req, res, next){
     console.log(req.body.csv);
     console.log("Files: " + req.files);
     console.log("File: " + req.file);
