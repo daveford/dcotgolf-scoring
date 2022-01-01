@@ -28,12 +28,16 @@ app.get("/api", function(req, res, next){
     res.send("Hello World");
 });
 
-//app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
-app.post('/api/scores/upload', function(req, res, next){
+app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
+//app.post('/api/scores/upload', function(req, res, next){
     console.log(req.body.csv);
+    console.log("Files: " + req.files);
+    console.log("File: " + req.file);
     let buff = Buffer.from(req.body.csv, 'base64');
     let text = buff.toString('utf-8');
     console.log(text);
 });
+
+app.post('/api/players/upload', function(req, res, next){});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
