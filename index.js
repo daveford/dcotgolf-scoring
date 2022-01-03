@@ -32,9 +32,8 @@ app.get("/api", function(req, res, next){
 
 //app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
 app.post('/api/scores/upload', function(req, res, next){
-    console.log(req.body.csv);
-    console.log("Files: " + req.files);
-    console.log("File: " + req.file);
+    // console.log("Files: " + req.files);
+    // console.log("File: " + req.file);
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     let sampleFile = req.files.sampleFile;
 
@@ -45,7 +44,7 @@ app.post('/api/scores/upload', function(req, res, next){
 
         res.send('File uploaded!');
     });
-    console.log(text);
+    //console.log(text);
 });
 
 app.post('/api/players/upload', function(req, res, next){});
