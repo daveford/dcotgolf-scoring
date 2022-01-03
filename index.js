@@ -39,11 +39,7 @@ app.post('/api/scores/upload', function(req, res, next){
     let csv = req.files.csv;
 
     // Use the mv() method to place the file somewhere on your server
-<<<<<<< HEAD
-    csv.mv(__dirname + '/uploads/test.csv', function(err) {
-=======
     csv.mv(__dirname + '/uploads/' + csv.name, function(err) {
->>>>>>> dev
         if (err)
         return res.status(500).send(err);
 
