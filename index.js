@@ -35,10 +35,10 @@ app.post('/api/scores/upload', function(req, res, next){
     // console.log("Files: " + req.files);
     // console.log("File: " + req.file);
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.sampleFile;
+    let csv = req.files.csv;
 
     // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv(__dirname + '/uploads/test.csv', function(err) {
+    csv.mv(__dirname + '/uploads/test.csv', function(err) {
         if (err)
         return res.status(500).send(err);
 
