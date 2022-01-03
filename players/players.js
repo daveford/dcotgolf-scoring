@@ -12,4 +12,4 @@ const Players = class{
     }
 }
 
-module.exports = Players();
+module.exports = new Players();
