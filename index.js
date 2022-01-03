@@ -55,11 +55,11 @@ app.post('/api/players/upload', function(req, res, next){
     csv.mv(__dirname + '/uploads/' + csv.name, function(err) {
         if (err)
         return res.status(500).send(err);
+
+        players.readPlayersCsv(__dirname + '/uploads/' + csv.name);
+
+        res.send('File uploaded!');
     });
-
-    players.readPlayersCsv(__dirname + '/uploads/' + csv.name);
-
-    res.send('File uploaded!');
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
