@@ -6,6 +6,7 @@ const express = require('express');
 const fileUpload = require('express-fileupload');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+const players = require('./players.js');
 
 var app = module.exports = express();
 
@@ -38,7 +39,11 @@ app.post('/api/scores/upload', function(req, res, next){
     let csv = req.files.csv;
 
     // Use the mv() method to place the file somewhere on your server
+<<<<<<< HEAD
     csv.mv(__dirname + '/uploads/test.csv', function(err) {
+=======
+    csv.mv(__dirname + '/uploads/' + csv.name, function(err) {
+>>>>>>> dev
         if (err)
         return res.status(500).send(err);
 
@@ -47,6 +52,18 @@ app.post('/api/scores/upload', function(req, res, next){
     //console.log(text);
 });
 
-app.post('/api/players/upload', function(req, res, next){});
+app.post('/api/players/upload', function(req, res, next){
+    let csv = req.files.csv;
+
+    // Use the mv() method to place the file somewhere on your server
+    csv.mv(__dirname + '/uploads/' + csv.name, function(err) {
+        if (err)
+        return res.status(500).send(err);
+    });
+
+    players.readPlayersCsv(__dirname + '/uploads/' + csv.name);
+
+    res.send('File uploaded!');
+});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
