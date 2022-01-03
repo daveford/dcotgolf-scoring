@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
-const upload = multer({ dest: 'tmp/csv/' });
+const upload = multer({ dest: '.' });
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
@@ -22,26 +22,22 @@ var app = module.exports = express();
 //     next();
 //   });
 app.use('/', express.static(__dirname + '/static'));
-app.use(express.bodyParser({uploadDir:__dirname +'/static/tmp', keepExtensions:true}));
+app.use(bodyParser({uploadDir:__dirname, keepExtensions:true}));
 
 app.get("/api", function(req, res, next){
     res.send("Hello World");
 });
 
-//app.post('/api/scores/upload', upload.single('file'), function(req, res, next){});
+//app.post('/api/scores/upload', upload.single('file'), function(req, res, next){
 app.post('/api/scores/upload', function(req, res, next){
-    fs.readdir(dirname, function(err, files) {
-        if (err) {
-           // some sort of error
-        } else {
-           if (!files.length) {
-               // directory appears to be empty
-           }
-           files.foreach(element => {
-            console.log(element);
-          })
-        }
-    });
+    console.log(req.body.csv);
+    console.log("Files: " + req.files);
+    console.log("File: " + req.file);
+    let buff = Buffer.from(req.body.csv, 'base64');
+    let text = buff.toString('utf-8');
+    console.log(text);
 });
+
+app.post('/api/players/upload', function(req, res, next){});
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
