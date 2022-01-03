@@ -22,10 +22,10 @@ var app = module.exports = express();
 //     req.key = key;
 //     next();
 //   });
-app.use('/', express.static(__dirname + '/static'));
-app.use(bodyParser({uploadDir:__dirname, keepExtensions:true}));
-app.use(multer({dest:__dirname + '/uploads/'}));
-
+app.use('/', express.static(__dirname + '/uploads'));
+// app.use(bodyParser({uploadDir:__dirname, keepExtensions:true}));
+// app.use(multer({dest:__dirname + '/uploads/'}));
+app.use(fileUpload());
 app.get("/api", function(req, res, next){
     res.send("Hello World");
 });
