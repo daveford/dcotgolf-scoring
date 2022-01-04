@@ -58,7 +58,7 @@ app.post('/api/players/upload', function(req, res, next){
             return res.status(500).send(err);
         } 
 
-        await players.readPlayersCsv(__dirname + csv.name);
+        await players.readPlayersCsv(__dirname + "/" + csv.name);
 
         res.send('File uploaded!');
     });
