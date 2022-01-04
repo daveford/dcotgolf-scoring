@@ -19,4 +19,4 @@ class Roster {
     }
 }
 
-module.exports = Roster;
+module.exports = new Roster();

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const csv = require('fast-csv');
 const parse = require('csv-parse');
-const Roster = require('../models/league-roster');
+var Roster = require('../models/league-roster');
 
 const Players = class{
     async readPlayersCsv(filepath){
