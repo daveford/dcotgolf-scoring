@@ -53,7 +53,10 @@ app.post('/api/players/upload', function(req, res, next){
 
     // Use the mv() method to place the file somewhere on your server
     csv.mv(__dirname + '/uploads/' + csv.name, async function(err) {
-        if (err) return res.status(500).send(err);
+        if (err){
+            console.log(err);
+            return res.status(500).send(err);
+        } 
 
         await players.readPlayersCsv(__dirname + '/uploads/' + csv.name);
 
