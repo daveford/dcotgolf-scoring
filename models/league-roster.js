@@ -10,7 +10,7 @@ class Roster {
     }
 
     addPlayer(name, handicap, isActive){
-        this.players.add({
+        this.players.push({
             name: name,
             handicap: handicap,
             isActive: isActive
