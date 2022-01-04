@@ -1,4 +1,4 @@
-export default class Roster {
+class Roster {
     constructor() {
         this.season=null;
         this.players=[];
@@ -19,4 +19,4 @@ export default class Roster {
     }
 }
 
-//module.exports = new Roster();
+module.exports = Roster;
