@@ -1,14 +1,20 @@
 const fs = require('fs');
-var parse = require('csv-parse');
+const path = require('path');
+const csv = require('fast-csv');
+const parse = require('csv-parse');
 
 const Players = class{
     async readPlayersCsv(filepath){
-        await fs.readFile(filepath, function (err, fileData) {
-            parse(fileData, {columns: false, trim: true}, function(err, rows) {
-              // Your CSV data is in an array of arrys passed to this callback as rows.
-              console.log(fileData);
-            })
-        })
+        fs.createReadStream(path.resolve(filepath))
+            .pipe(csv.parse({ headers: false }))
+            .on('error', error => console.error(error))
+            .on('data', row => console.log(row))
+        // await fs.readFile(filepath, function (err, fileData) {
+        //     parse(fileData, {columns: false, trim: true}, function(err, rows) {
+        //       // Your CSV data is in an array of arrys passed to this callback as rows.
+        //       console.log(rows);
+        //     })
+        // })
     }
 }
 
