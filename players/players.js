@@ -28,7 +28,7 @@ const Players = class{
             .on('end', async () => {
                 var seasons = await queries.getSeason(roster.season);
                 if(seasons.length == 0){
-                    var result = await insertSeason(roster.season);
+                    var result = await queries.insertSeason(roster.season);
                     console.log(result);
                 } 
                 console.log(seasons);
