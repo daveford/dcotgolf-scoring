@@ -31,7 +31,9 @@ async function getSeason(season){
 }
 
 async function insertSeason(season){
+    const {rows, fields} = await pool.query("INSERT INTO Seasons (Name) VALUES ('" + season + "') ");
 
+    return rows;
 }
 
 
