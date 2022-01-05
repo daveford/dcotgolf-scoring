@@ -6,7 +6,7 @@ const pool = new Pool({
   database: process.env.DATABASE_NAME,
   password: process.env.DATABASE_PASSWORD,
   port: 5432,
-  ssl: true
+  ssl: { rejectUnauthorized: false }
 })
 // var client;
 // class DbManager {
