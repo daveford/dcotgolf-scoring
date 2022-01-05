@@ -7,33 +7,35 @@ const pool = new Pool({
   password: process.env.DATABASE_PASSWORD,
   port: 5432,
 })
-var client;
-class DbManager {
-    constructor(){
-        // client = new Client({
-        //     connectionString: process.env.DATABASE_URL,
-        //     ssl: {
-        //       rejectUnauthorized: false
-        //     }
-        // });
-    }
+// var client;
+// class DbManager {
+//     constructor(){
+//         // client = new Client({
+//         //     connectionString: process.env.DATABASE_URL,
+//         //     ssl: {
+//         //       rejectUnauthorized: false
+//         //     }
+//         // });
+//     }
 
-    async getSeason(season){
-        const {rows, fields} = await pool.query("SELECT * FROM Seasons WHERE Name='"+season+"'");
+    
 
-        return rows;
-    }
+    
+// }
 
-    async insertSeason(season){
+async function getSeason(season){
+    const {rows, fields} = await pool.query("SELECT * FROM Seasons WHERE Name='"+season+"'");
 
-    }
+    return rows;
 }
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
+
+async function insertSeason(season){
+
+}
 
 
-module.exports = DbManager;
+//module.exports = DbManager;
+module.exports = {
+    getSeason,
+    insertSeason
+  }
