@@ -10,12 +10,12 @@ const pool = new Pool({
 var client;
 class DbManager {
     constructor(){
-        client = new Client({
-            connectionString: process.env.DATABASE_URL,
-            ssl: {
-              rejectUnauthorized: false
-            }
-        });
+        // client = new Client({
+        //     connectionString: process.env.DATABASE_URL,
+        //     ssl: {
+        //       rejectUnauthorized: false
+        //     }
+        // });
     }
 
     async getSeason(season){

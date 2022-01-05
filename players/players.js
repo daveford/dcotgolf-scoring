@@ -3,12 +3,12 @@ const path = require('path');
 const csv = require('fast-csv');
 const parse = require('csv-parse');
 const Roster = require('../models/league-roster.js');
-const DB = require('../db/queries.js');
+const DbManager = require('../db/queries.js');
 
 const Players = class{
     async readPlayersCsv(filepath){
         var roster = new Roster();
-        var db = new DB();
+        var db = new DbManager();
         fs.createReadStream(path.resolve(filepath))
             .pipe(csv.parse({ headers: false }))
             .on('error', error => console.error(error))
