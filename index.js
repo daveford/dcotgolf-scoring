@@ -66,8 +66,8 @@ app.post('/api/players/upload', function(req, res, next){
 });
 
 app.post('/api/players', async function(req, res, next){
-    var players = await players.getPlayers(); 
-    res.send(JSON.stringify(players));
+    var playersList = await players.getPlayers(); 
+    res.send(JSON.stringify(playersList));
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
