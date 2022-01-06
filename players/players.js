@@ -17,6 +17,8 @@ const Players = class{
                 if(row[0].toLowerCase() == "season") roster.season = row[1];
                 else if(row[0].toLowerCase() == "name" || row[0] == "") ;
                 else {
+                    console.log(row);
+                    console.log(row[0]);
                     roster.addPlayer(row[0]);
                 }
                 //console.log(JSON.stringify(roster));

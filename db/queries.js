@@ -45,7 +45,6 @@ async function insertSeason(season){
 
 async function batchInsertPlayers(players){
     var sql = format('INSERT INTO Players (name, handicap, isactive) VALUES %L', players);
-    console.log(sql);
     const {rows, fields} = await pool.query(sql);
 
     return rows;
