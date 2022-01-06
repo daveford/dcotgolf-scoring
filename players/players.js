@@ -19,7 +19,7 @@ const Players = class{
                 else {
                     console.log(row);
                     console.log(row[0]);
-                    roster.addPlayer(row[0], row[1], (row[2].toLowerCase() === 'true'));
+                    roster.addPlayer(row[0], row[1], (row[2].toLowerCase() === 'true' ? 1 : 0));
                 }
                 //console.log(JSON.stringify(roster));
             })
