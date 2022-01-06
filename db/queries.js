@@ -1,5 +1,6 @@
 const { Client } = require('pg');
 const { Pool } = require('pg');
+var format = require('pg-format');
 const pool = new Pool({
   user: process.env.DATABASE_USERNAME,
   host: process.env.DATABASE_HOST,
@@ -30,8 +31,20 @@ async function getSeason(season){
     return rows;
 }
 
+async function getSeasons(season){
+    const {rows, fields} = await pool.query("SELECT * FROM Seasons");
+
+    return rows;
+}
+
 async function insertSeason(season){
     const {rows, fields} = await pool.query("INSERT INTO Seasons (Name) VALUES ('" + season + "') ");
+
+    return rows;
+}
+
+async function batchInsertPlayers(players){
+    const {rows, fields} = await pool.query(format('INSERT INTO users (Name, Handicap, IsActive) VALUES %L', players));
 
     return rows;
 }
@@ -40,5 +53,7 @@ async function insertSeason(season){
 //module.exports = DbManager;
 module.exports = {
     getSeason,
-    insertSeason
+    getSeasons,
+    insertSeason,
+    batchInsertPlayers
   }
