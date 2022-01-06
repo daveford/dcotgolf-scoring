@@ -44,7 +44,7 @@ async function insertSeason(season){
 }
 
 async function getPlayers(){
-    const {rows, fields} = await pool.quer("SELECT * FROM Players");
+    const {rows, fields} = await pool.query("SELECT * FROM Players");
     return rows;
 }
 
