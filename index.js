@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const players = require('./players/players.js');
+const seasons = require('./seasons/seasons.js');
 
 var app = module.exports = express();
 
@@ -67,6 +68,11 @@ app.post('/api/players/upload', function(req, res, next){
 app.get('/api/players', async function(req, res, next){
     var playersList = await players.getPlayers(); 
     res.send(JSON.stringify(playersList));
+});
+
+app.get('/api/seasons', async function(req, res, next){
+    var seasonsList = await seasons.getSeasons(); 
+    res.send(JSON.stringify(seasonsList));
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
