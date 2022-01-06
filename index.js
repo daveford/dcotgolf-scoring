@@ -64,7 +64,7 @@ app.post('/api/players/upload', function(req, res, next){
     });
 });
 
-app.post('/api/players', async function(req, res, next){
+app.get('/api/players', async function(req, res, next){
     var playersList = await players.getPlayers(); 
     res.send(JSON.stringify(playersList));
 });
