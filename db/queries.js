@@ -43,6 +43,11 @@ async function insertSeason(season){
     return rows;
 }
 
+async function getPlayers(){
+    const {rows, fields} = await pool.quer("SELECT * FROM Players");
+    return rows;
+}
+
 async function batchInsertPlayers(players){
     var sql = format('INSERT INTO Players (name, handicap, isactive) VALUES %L', players);
     const {rows, fields} = await pool.query(sql);
@@ -56,5 +61,6 @@ module.exports = {
     getSeason,
     getSeasons,
     insertSeason,
-    batchInsertPlayers
+    batchInsertPlayers,
+    getPlayers
   }

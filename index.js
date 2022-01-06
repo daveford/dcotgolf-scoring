@@ -7,6 +7,7 @@ const fileUpload = require('express-fileupload');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 const players = require('./players/players.js');
+const players = require('./players/players.js');
 
 var app = module.exports = express();
 
@@ -62,6 +63,11 @@ app.post('/api/players/upload', function(req, res, next){
 
         res.send('File uploaded!');
     });
+});
+
+app.post('/api/players', async function(req, res, next){
+    var players = await players.getPlayers(); 
+    res.send(JSON.stringify(players));
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));

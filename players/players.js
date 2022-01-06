@@ -41,6 +41,10 @@ const Players = class{
             })
             
     }
+
+    async getPlayers(){
+        return await queries.getPlayers();
+    }
 }
 
 module.exports = new Players();
