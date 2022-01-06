@@ -44,7 +44,7 @@ async function insertSeason(season){
 }
 
 async function batchInsertPlayers(players){
-    const {rows, fields} = await pool.query(format('INSERT INTO users (Name, Handicap, IsActive) VALUES %L', players));
+    const {rows, fields} = await pool.query(format('INSERT INTO Players (Name, Handicap, IsActive) VALUES (%L)', players));
 
     return rows;
 }
