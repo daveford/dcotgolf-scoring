@@ -27,11 +27,14 @@ const Players = class{
             })
             .on('end', async () => {
                 var seasons = await queries.getSeason(roster.season);
-                if(seasons.length == 0){
-                    var result = await queries.insertSeason(roster.season);
-                    var playersResult = await queries.batchInsertPlayers(roster.players);
-                    console.log(result);
-                } 
+                var result = await queries.insertSeason(roster.season);
+                console.log(roster.players);
+                var playersResult = await queries.batchInsertPlayers(roster.players);
+                // if(seasons.length == 0){
+                //     var result = await queries.insertSeason(roster.season);
+                //     var playersResult = await queries.batchInsertPlayers(roster.players);
+                //     console.log(result);
+                // }
                 console.log(seasons);
             })
             
