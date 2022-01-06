@@ -27,7 +27,7 @@ const Players = class{
                 console.log(roster.players);
                 var playersArr = [];
                 roster.players.map((player) => {
-                    playersArr.push([player.name, player.handicap, player.isactive]);
+                    playersArr.push([player.name, player.handicap, player.isActive]);
                 })
                 var playersResult = await queries.batchInsertPlayers(playersArr);
                 // if(seasons.length == 0){
